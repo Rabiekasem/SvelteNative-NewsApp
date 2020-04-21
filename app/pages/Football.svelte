@@ -7,12 +7,13 @@
   import News from "./News.svelte"
   import Global from "./Global.svelte"
   import Games from "./Games.svelte"
+  import Contact from "./Contact.svelte"
   import App from "../App.svelte"
   
   import FirestoreParser from "firestore-parser"
   let items = []
   const baseUrl = "https://firestore.googleapis.com/v1/"
-  const productsUrl = baseUrl + "projects/my-first-firestore-proje-9c783/databases/(default)/documents/nba-data-2"  
+  const productsUrl = baseUrl + "projects/my-first-firestore-proje-9c783/databases/(default)/documents/football-data"  
   import { registerNativeViewElement } from 'svelte-native/dom'
 
   registerNativeViewElement("cardView", () => 
@@ -36,6 +37,15 @@
       }
     })
   }
+
+  const showContact = async() =>{
+         await navigate({
+             page: Contact,
+             props:{
+                 msg:""
+             }
+         })
+     } 
   
   const showNews = async() =>{
         await navigate({
@@ -88,8 +98,9 @@
  	            <button text="Main" width="70" height="30" backgroundColor="" on:tap={() => showMain()}/>
  	            <button text="News" width="70" height="30" backgroundColor="" on:tap={() => showNews()}/>
  	            <button text="Games" width="70" height="30" backgroundColor=""  on:tap={() => showGames()}/>
-              <button text="Global" width="70" height="30" backgroundColor="" on:tap={() => showGlobal()}/>
-              <button text="Football" width="70" height="30" backgroundColor=""/>
+                <button text="Global" width="70" height="30" backgroundColor="" on:tap={() => showGlobal()}/>
+                <button text="Football" width="70" height="30" backgroundColor=""/>
+                <button text="Contact" width="70" height="30" backgroundColor="" on:tap={() => showContact()}/>
             </flexboxLayout>
         </scrollView>
         </stackLayout>
@@ -98,15 +109,16 @@
         <scrollView class="scrollOne" height="100%">
             <stackLayout class="stackOne">
               {#each items as item}
-                <cardView class="card" elevation="100" margin="25" height="300" width="70%">
+                <cardView class="card" elevation="100" margin="25" height="100%" width="70%">
                     <flexboxLayout class="stackTwo" flexDirection="column" on:tap={() => showNba()} >
-                        <image src="{item.fields.IMG}" stretch="aspectFit" />
-                        <label class="h1" text={item.fields.teamName}/>
-                        <label class="p" text= "Win: {item.fields.W}"/>
-                        <label class="p" text= "Lose: {item.fields.L}"/>
+                        <image src="{item.fields.Img}" stretch="aspectFit" />
+                        <label class="h1" text={item.fields.Club}/>
+                        <label class="p" text= "Asissts: {item.fields.Asissts}"/>
+                        <label class="p" text= "Goals: {item.fields.Goals}"/>
                         <label class="line"/>
-                        <label class="p" text= "Rebound: {item.fields.R}"/>
-                        <label class="p" text= "Asisst: {item.fields.A}"/>   
+                        <label class="p" text= "Games: {item.fields.Games}"/>
+                        <label class="p" text= "Trophies: {item.fields.Trophies}"/>
+                        <label class="p" text= "Hattrick: {item.fields.Hattrick}"/>    
                     </flexboxLayout>
                 </cardView>
               {:else}
@@ -160,8 +172,8 @@
     color: whitesmoke;
   }
   .stackTwo > image {
-    width: 80;
-    height: 80;
+    width: 100%;
+    height: 100%;
   }
   
   .stackTwo{

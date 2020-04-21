@@ -1,12 +1,13 @@
 <script>
 
   import {navigate} from "svelte-native"
-  import {components} from "svelte-native"
   import {showModal} from "svelte-native"
+  import Contact from "./pages/Contact.svelte"
   import News from "./pages/News.svelte"
   import Games from "./pages/Games.svelte"
   import Global from "./pages/Global.svelte"
   import Football from "./pages/Football.svelte"
+  
   import SubPage3 from "./modals/SubPage3.svelte"
   import SubPage4 from "./modals/SubPage4.svelte" 
 
@@ -39,6 +40,15 @@
         })
     } 
 
+    const showContact = async() =>{
+        await navigate({
+            page: Contact,
+            props:{
+                msg:""
+            }
+        })
+    } 
+
     const showGlobal = async() =>{
         await navigate({
             page: Global,
@@ -57,6 +67,7 @@
             }
         })
   } 
+
   const goatArticle = async() =>{
         await showModal({
             page: SubPage4,
@@ -84,12 +95,13 @@
     
             <stackLayout>
             <scrollView orientation="horizontal">
-                <flexboxLayout class="buttonsMain" alignItems="flex-start" backgroundColor="" orientation="horizontal">
+                <flexboxLayout class="buttonsMain" alignItems="flex-start" backgroundColor="" orientation="horizontal" height="60">
         	        <button text="Main" width="70" height="30" backgroundColor=""/>
-        	        <button text="News" width="70" height="30" backgroundColor="" on:tap={() => showNews()}/>
+        	        <image class="basket" src="~/images/basket.png" stretch="aspectFit" width="50" height="30" backgroundColor="" on:tap={() => showNews()}/>
         	        <button text="Games" width="70" height="30" backgroundColor="" on:tap={() => showGames()}/>
                     <button text="Global" width="70" height="30" backgroundColor="" on:tap={() => showGlobal()}/>
                     <button text="Football" width="70" height="30" backgroundColor="" on:tap={() => showFootball()}/>
+                    <button text="Contact" width="70" height="30" backgroundColor="" on:tap={() => showContact()}/>
                 </flexboxLayout>
             </scrollView> 
             </stackLayout>
@@ -155,6 +167,7 @@
     background-color: #e2e2e2;
  } 
 
+
  .buttonsMain{
     display: flex;
     align-items: center;
@@ -166,6 +179,10 @@
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
+ }
+
+ .buttonsMain > image{
+     margin: 15 15;
  }
 
  .buttonsMain > button{

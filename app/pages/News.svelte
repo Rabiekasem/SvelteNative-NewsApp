@@ -3,10 +3,13 @@
   import {goBack} from "svelte-native"
   import {navigate} from "svelte-native"
   import {showModal} from 'svelte-native'
+
   import Games from "./Games.svelte"
   import Global from "./Global.svelte"
-  import Football from "./Football.svelte"
+  import Football from "./Football.svelte" 
+  import Contact from "./Contact.svelte" 
   import App from "../App.svelte"
+
   import SubPage from "../modals/SubPage.svelte"
   
   const apiKey = "e14f4ede420e450baafed861c6893a83"
@@ -44,6 +47,16 @@
       }
     })
   }
+
+  const showContact = async() =>{
+        await navigate({
+            page: Contact,
+            props:{
+                msg:""
+            }
+        })
+    } 
+ 
 
   const showGlobal = async() =>{
     await navigate({
@@ -98,6 +111,7 @@
     	      <button text="Games" width="70" height="30" backgroundColor="" on:tap={() => showGames()}/>
             <button text="Global" width="70" height="30" backgroundColor="" on:tap={() => showGlobal()}/>
             <button text="Football" width="70" height="30" backgroundColor="" on:tap={() => showFootball()}/>
+            <button text="Contact" width="70" height="30" backgroundColor="" on:tap={() => showContact()}/>
           </flexboxLayout>
         </scrollView>
       </stackLayout>

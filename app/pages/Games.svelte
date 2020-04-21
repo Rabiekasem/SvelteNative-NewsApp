@@ -7,6 +7,7 @@
   import News from "./News.svelte"
   import Global from "./Global.svelte"
   import Football from "./Football.svelte"
+  import Contact from "./Contact.svelte"
   import App from "../App.svelte"
   
   import FirestoreParser from "firestore-parser"
@@ -55,6 +56,16 @@
         })
   }  
 
+  const showContact = async() =>{
+        await navigate({
+            page: Contact,
+            props:{
+                msg:""
+            }
+        })
+    } 
+
+
   const showNba = async() =>{
         await showModal({
             page: SubPage2,
@@ -71,7 +82,7 @@
             .then(parsed =>{
                 items = parsed.documents
              })
-        .catch(error => console.lgo(error))  
+        .catch(error => console.log(error))  
   }
   getProducts()
 
@@ -90,6 +101,7 @@
  	            <button text="Games" width="70" height="30" backgroundColor=""/>
               <button text="Global" width="70" height="30" backgroundColor="" on:tap={() => showGlobal()}/>
               <button text="Football" width="70" height="30" backgroundColor="" on:tap={() => showFootball()}/>
+              <button text="Contact" width="70" height="30" backgroundColor="" on:tap={() => showContact()}/>
             </flexboxLayout>
         </scrollView>
         </stackLayout>
