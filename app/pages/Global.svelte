@@ -10,11 +10,8 @@
   import Contact from "./Contact.svelte"
   import App from "../App.svelte"
   
-  import SubPage from "../modals/SubPage.svelte"
-  
-  const apiKey = "e14f4ede420e450baafed861c6893a83"
-  const NewsApi = `https://newsapi.org/v2/everything?q=bitcoin&apiKey=${apiKey}`
-  
+  import SubPage5 from "../modals/SubPage5.svelte"
+
   
   import { registerNativeViewElement } from 'svelte-native/dom'
     registerNativeViewElement("cardView", () => 
@@ -69,9 +66,9 @@
         })
     } 
 
-  const showPage = async(article) =>{
+  const showfootballGames = async(article) =>{
     await showModal({
-      page: SubPage,
+      page: SubPage5,
       fullscreen: true,
       props:{
         article:article
@@ -88,13 +85,11 @@
     })
   }
   
-  onMount (() => {
-    console.log("HELLO HELLO")
-    fetch(NewsApi)
-    .then(response => response.json())
+    onMount (async() => {
+    await fetch("https://www.scorebat.com/video-api/v1/")
+    .then (response => response.json())
     .then(json => {
-      console.log("HELLO HELLO", json)
-      articles = json.articles
+      articles = json
       })
     .catch(error => console.log(error))
   })
@@ -123,12 +118,13 @@
           <scrollView height="100%">
             <stackLayout class="articles" >
               {#each articles as article}
-                <cardView class="card" elevation="100" margin="25" height="160" width="90%">
-                  <flexboxLayout class="article" height="100%" flexDirection="row"  on:tap={() => showPage(article)}>
-                      <image src="{article.urlToImage}" class="img-rounded img" stretch="fill" />
+                <cardView class="card" elevation="100" margin="25" height="400" width="100%">
+                  <flexboxLayout class="article" height="100%" flexDirection="row"  on:tap={() => showfootballGames(article)}>
                       <stackLayout class="lastStack">
-                        <label textWrap={true} class="p text-center" text ="{article.title}" />
-                        <label text ="{article.author}" class=" p author text-center"/>
+                        <label class="p text-center" text ="{article.title}" />
+                        <label class="p text-center" text ="{article.competition.name}" />
+                        <label class="p text-center" text ="{article.competition.url}" />
+                        <webView class="video" src="{article.embed}" />
                       </stackLayout>
                   </flexboxLayout>
                 </cardView>
@@ -148,7 +144,7 @@
 <style>
 
   .scroll{
-    background-color: #e2e2e2;
+    background-color: #dbbaba;
  } 
 
   .page{
@@ -208,17 +204,13 @@
     background-color: white;
     margin: 15;
   }
-  .img{
-    width: 70%;
-  }
   
-  .author{
-    bottom: 0;
-    font-size: 10;
-    
-    color: rgb(128, 87, 124);
-    font-size: 18;
+  .video{
+    margin: 20 auto;
+    height: 250;
+    width: 100%;
   }
+
   .lastStack{
     margin: 15 auto;
     font-size: 12;
