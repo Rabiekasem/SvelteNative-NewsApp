@@ -94,13 +94,33 @@
 
         <stackLayout>
         <scrollView orientation="horizontal">
-            <flexboxLayout class="buttonsMain" alignItems="flex-start" backgroundColor="">
- 	            <button text="Main" width="70" height="30" backgroundColor="" on:tap={() => showMain()}/>
- 	            <button text="News" width="70" height="30" backgroundColor="" on:tap={() => showNews()}/>
- 	            <button text="Games" width="70" height="30" backgroundColor=""  on:tap={() => showGames()}/>
-                <button text="Global" width="70" height="30" backgroundColor="" on:tap={() => showGlobal()}/>
-                <button text="Football" width="70" height="30" backgroundColor=""/>
-                <button text="Contact" width="70" height="30" backgroundColor="" on:tap={() => showContact()}/>
+            <flexboxLayout class="buttonsMain" alignItems="flex-start" backgroundColor="" orientation="horizontal" height="60">
+              
+              <flexboxLayout flexDirection="column" on:tap={() => showMain()}>
+        	      <button text="Main" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/home.png" stretch="fit" width="10" height="10"/>
+              </flexboxLayout>
+              <flexboxLayout flexDirection="column" on:tap={() => showNews()}>
+                <button text="News" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/news.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+              <flexboxLayout flexDirection="column" on:tap={() => showGames()}>
+                <button text="Games" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/basketball.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+              <flexboxLayout flexDirection="column" on:tap={() => showGlobal()}>
+                <button text="Global" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/football.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+              <flexboxLayout flexDirection="column">
+                <button text="Players" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/players.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+        	    <flexboxLayout flexDirection="column" on:tap={() => showContact()}>
+                <button text="Contact" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/contact.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+
             </flexboxLayout>
         </scrollView>
         </stackLayout>
@@ -109,12 +129,14 @@
         <scrollView class="scrollOne" height="100%">
             <stackLayout class="stackOne">
               {#each items as item}
-                <cardView class="card" elevation="100" margin="25" height="100%" width="70%">
+                <cardView class="card" elevation="40" margin="25" height="100%" width="70%">
                     <flexboxLayout class="stackTwo" flexDirection="column" on:tap={() => showNba()} >
                         <image src="{item.fields.Img}" stretch="aspectFit" />
                         <label class="h1" text={item.fields.Club}/>
                         <label class="p" text= "Asissts: {item.fields.Asissts}"/>
+                        <progress value="{item.fields.Asissts / 5}" maxValue="100" backgroundColor="gray" width="120"/>
                         <label class="p" text= "Goals: {item.fields.Goals}"/>
+                        <progress value="{item.fields.Goals / 5}" maxValue="100" backgroundColor="gray" width="120"/>
                         <label class="line"/>
                         <label class="p" text= "Games: {item.fields.Games}"/>
                         <label class="p" text= "Trophies: {item.fields.Trophies}"/>
@@ -137,9 +159,15 @@
   .scroll{
     background-color: #e2e2e2;
  } 
+
+ .basket2{
+    margin: auto 40;
+  }
+
   .page{
     background-color: #e2e2e2;
   } 
+
   .card{
     background-color: #e9e9e9; 
     animation-name: fade;
@@ -147,6 +175,7 @@
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
   } 
+  
   @keyframes fade{
   from{
     opacity: 0.5;

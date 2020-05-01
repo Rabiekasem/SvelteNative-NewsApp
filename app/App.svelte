@@ -10,6 +10,8 @@
   
   import SubPage3 from "./modals/SubPage3.svelte"
   import SubPage4 from "./modals/SubPage4.svelte" 
+  import SubPage6 from "./modals/SubPage6.svelte"
+  import SubPage7 from "./modals/SubPage7.svelte"
 
 
     
@@ -68,6 +70,26 @@
         })
   } 
 
+  const natureArticle = async() =>{
+        await showModal({
+            page: SubPage6,
+            fullscreen: "true",
+            props:{
+                msg:""
+            }
+        })
+  } 
+
+  const sportsArticle = async() =>{
+        await showModal({
+            page: SubPage7,
+            fullscreen: "true",
+            props:{
+                msg:""
+            }
+        })
+  } 
+
   const goatArticle = async() =>{
         await showModal({
             page: SubPage4,
@@ -78,11 +100,18 @@
         })
   }
 
-  let text = ""
+  let likeColor= ""
+  let likeColorTwo= ""
 
-  const doit = () => {
-      console.log(text)
-      text = ""
+  const changeColor = () => {
+      likeColor = "yellow"
+      likeColorTwo = ""
+      console.log(likeColor + " I liked the article")
+  }
+  const changeColor1 = () => {
+      likeColor = ""
+      likeColorTwo = "black"
+      console.log(likeColorTwo + " I did not like the article")
   }
 
  
@@ -96,19 +125,83 @@
             <stackLayout>
             <scrollView orientation="horizontal">
                 <flexboxLayout class="buttonsMain" alignItems="flex-start" backgroundColor="" orientation="horizontal" height="60">
-        	        <button text="Main" width="70" height="30" backgroundColor=""/>
-        	        <image class="basket" src="~/images/basket.png" stretch="aspectFit" width="50" height="30" backgroundColor="" on:tap={() => showNews()}/>
-        	        <button text="Games" width="70" height="30" backgroundColor="" on:tap={() => showGames()}/>
-                    <button text="Global" width="70" height="30" backgroundColor="" on:tap={() => showGlobal()}/>
-                    <button text="Football" width="70" height="30" backgroundColor="" on:tap={() => showFootball()}/>
-                    <button text="Contact" width="70" height="30" backgroundColor="" on:tap={() => showContact()}/>
+                    
+                    <flexboxLayout flexDirection="column">
+        	           <button text="Main" width="70" height="30" backgroundColor="black" color="white"/>
+                       <image class="basket2" src="~/images/home.png" stretch="fit" width="10" height="10"/>
+                    </flexboxLayout>
+                    <flexboxLayout flexDirection="column" on:tap={() => showNews()}>
+                        <button text="News" width="70" height="30" backgroundColor="black" color="white"/>
+                        <image class="basket2" src="~/images/news.png" stretch="fit" width="10" height="10" />
+                    </flexboxLayout>
+                    <flexboxLayout flexDirection="column" on:tap={() => showGames()}>
+                        <button text="Games" width="70" height="30" backgroundColor="black" color="white"/>
+                        <image class="basket2" src="~/images/basketball.png" stretch="fit" width="10" height="10" />
+                    </flexboxLayout>
+                    <flexboxLayout flexDirection="column" on:tap={() => showGlobal()}>
+                        <button text="Global" width="70" height="30" backgroundColor="black" color="white"/>
+                        <image class="basket2" src="~/images/football.png" stretch="fit" width="10" height="10" />
+                    </flexboxLayout>
+                    <flexboxLayout flexDirection="column" on:tap={() => showFootball()}>
+                        <button text="Players" width="70" height="30" backgroundColor="black" color="white"/>
+                        <image class="basket2" src="~/images/players.png" stretch="fit" width="10" height="10" />
+                    </flexboxLayout>
+        	        <flexboxLayout flexDirection="column" on:tap={() => showContact()}>
+                        <button text="Contact" width="70" height="30" backgroundColor="black" color="white"/>
+                        <image class="basket2" src="~/images/contact.png" stretch="fit" width="10" height="10" />
+                    </flexboxLayout>
+                    
                 </flexboxLayout>
             </scrollView> 
             </stackLayout>
+
+            
+            <absoluteLayout class="main">
+                <image src="~/images/nature.jpg" top="0" class="image" stretch="fill" />
+                <label textwrap={true} left="50%" top="250" class="mainText" text="NATURE..." />
+                <label textwrap={true} left="80%" top="320" class="mainText2" text="are breathing again" />
+            </absoluteLayout>
+
+            <stackLayout class="nature" on:tap={() => natureArticle()}>
+                <button class="button" />
+                <label textwrap={true} class="natureLabel" text="In coronavirus lockdown, nature bounces back"/>
+                <label textwrap={true} class="natureLabel1" text="he environmental changes wrought by the coronavirus were first visible from space. Then, as the disease and the lockdown spread, they could be sensed in the sky above our heads, the air in our lungs and even the ground beneath our feet."/>
+                <button class="label2" text="Click to read more"/>
+            </stackLayout>
+
+            <stackLayout>
+                <stackLayout class="question">
+                   <label text="Did you like this article ?"/>
+                </stackLayout>
+                <absoluteLayout  class= "reactionBar">
+                    <image left="20%" top="10" class="like" src="~/images/smile.png" tintColor="{likeColor}"
+                           stretch="aspectFit" on:tap={() => changeColor()} />
+                    <image left="100%" top="10" class="like" src="~/images/sad.png" tintColor="{likeColorTwo}"
+                            stretch="aspectFit" on:tap={() => changeColor1()} />
+                </absoluteLayout >
+            </stackLayout>
+
+               <label class="line"/>
+
+            <absoluteLayout class="main">
+                <image src="~/images/football.jpg" top="100" left="110" width="40%" height="30%" class=" image1" stretch="fill" />
+                <image src="~/images/baseball.jpg" top="0" left="0" width="40%" height="30%" class=" image2" stretch="fill" />
+                <image src="~/images/tennis.jpg" top="0" left="220" width="40%" height="30%" class="image3" stretch="fill" />
+            </absoluteLayout>
+
+            <stackLayout class="nature" on:tap={() => sportsArticle()}>
+                <button class="button" />
+                <label textwrap={true} class="natureLabel" text="When Will Sports Come Back? Here Is What Has to Happen First"/>
+                <label textwrap={true} class="natureLabel1" text="Sports leagues face large, but not insurmountable, obstacles to even getting games back on television. Fans in the stands? Wait till next year."/>
+                <button class="label2" text="Click to read more"/>
+            </stackLayout>
+
+            <label class="line"/>
+            
         
             <stackLayout>
-                <image class="stack2" src="https://7wallpapers.net/wp-content/uploads/2016/05/20_Lebron-James.jpg"
-                stretch="none" />
+                <image class="stack2" src="~/images/lebron4.jpg"
+                stretch="fill" />
                 <image class="logoImg" src="https://i.imgur.com/PLIvCSw.png"
                 stretch="fill" />
             </stackLayout>
@@ -116,7 +209,7 @@
             
             <stackLayout class="stack3" on:tap={() => lebronArticle()} >
                 <label class="label1" textwrap={true} text="LeBron's Physique Desirable!" />
-                <label class="label2" text="Click to read" textDecoration="Underline"/>
+                <button class="label2" text="Click to read more"/>
                 <label class="label3" textwrap={true} text="Lebron James is one of the best examples of that muscular, but lean physique that we talk about all the time" />
             </stackLayout>
 
@@ -133,7 +226,7 @@
 
             <stackLayout class="stack5" on:tap={() => goatArticle()}>
                 <label class="label1" textwrap={true} text="The Ultimate NBA G.O.A.T. Debate" />
-                <label class="label2" text="Click to read" textDecoration="Underline"/>
+                <button class="label2" text="Click to read"/>
                 <label class="label3" textwrap={true} text="LeBron James continues to build his legacy as one of the greatest NBA athletes ever...but is he the greatest player of all time? It's a debate that has raged between NBA fans for years. Jordan is revered as the greatest because of his killer instinct and championship pedigree. James has accomplished more statistically at this point in his career and may be the more imposing athlete. But who is the 🐐 ? 🏀" />
             </stackLayout>
 
@@ -147,12 +240,6 @@
                     stretch="fill" />
                 </flexboxLayout>
             </stackLayout>
-
-            <stackLayout width="100%" height="40%">
-              <textView bind:text="{text}" />
-              <button text="send" width="90" height="60" backgroundColor="" on:tap={() => doit()}/>
-            </stackLayout>
-        
     
         </stackLayout>
         
@@ -162,11 +249,147 @@
 
 
 <style>
-
+.basket2{
+    
+    margin: auto 40;
+}
  .scroll{
     background-color: #e2e2e2;
  } 
 
+ .mainText{
+    font-size: 40;
+    font-family: 'Times New Roman', Times, serif;  
+    animation-name: change;
+    animation-duration: 3s;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+    transition: 2s;
+ }
+
+ .mainText2{
+    font-size: 20;
+    font-family: 'Times New Roman', Times, serif;  
+    color: green;  
+    animation-name: change2;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+ }
+
+ .line{
+   width: 80%;
+   height: 1.5;
+   background-color: white;
+   margin: 10 5;
+   margin-bottom: 50;
+  }
+
+ .button{
+    width: 30;
+    height: 30;
+    border-radius: 50%;
+    background-color: white;
+    animation-name: change3;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+ }
+
+ .image{
+    animation-name: change4;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+ }
+
+
+ .reactionBar{
+     margin: 5 25%;
+     margin-bottom: 25;
+ }
+
+ .question{
+    margin: auto 25%;
+    margin-top: 50;
+ }
+
+ .like{
+     width: 50;
+     height: 50;
+ }
+
+ @keyframes change4{
+     from{
+         opacity: 0.2;
+         transition: 2s;
+     }
+     to{
+         opacity: 1;
+         transition: 2s;
+     }
+ }
+
+ @keyframes change3{
+     from{
+         
+         background-color: white;
+         transition: 0.5s;
+     }
+     to{
+        
+         background-color: red;
+         transition: 0.5s;
+     }
+     
+ }
+
+ @keyframes change{
+     0%{
+         color: black; 
+         background-color: white;
+         transition: 2s;
+     }
+     50%{
+         color: white;
+         background-color: rgb(113, 250, 95);
+         transition: 2s;
+     }
+     100%{
+         color: white;
+         background-color: rgb(247, 247, 247);
+         transition: 2s;
+     }
+     
+ }
+
+ @keyframes change2{
+     from{
+         opacity: 0;
+         transform: translateX(-300);
+         color: white; 
+         background-color: red;
+         transition: 1s;
+         
+     }
+     to{
+         opacity: 1;
+         transform: translateX(10);
+         color: black;
+         background-color: white;
+         transition: 1s;
+     }
+     
+ }
+
+ .natureLabel{
+     font-weight: 600;
+     font-size: 40;
+     margin-top: 5;
+ }
 
  .buttonsMain{
     display: flex;
@@ -202,7 +425,7 @@
     background-attachment: fixed;
  }
 
- .stack3, .stack5{
+ .stack3, .stack5, .nature{
      margin: 0 15;
      margin-top: 40;
      margin-bottom: 20;
@@ -220,10 +443,17 @@
     margin-top: -45;
  }
 
+
  .label1{
     font-weight: 600;
     font-size: 40;
-    margin-top: 20;
+ }
+ .label2{
+    margin-top: 10;
+    margin-top: 40;
+    background-color: rgb(207, 189, 224);
+    border-radius: 40%;
+    width: 60%;
  }
 
  @keyframes leftIn{

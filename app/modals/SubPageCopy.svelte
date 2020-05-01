@@ -1,19 +1,19 @@
 <script>
 
   import { closeModal } from 'svelte-native'
-  export let article
+  export let item
 
 </script>
 
 <page class="page">
   <scrollView>
     <stackLayout class="stack">
-      <label class="label1" textWrap={true} text= "{article.title}" />
+      <label class="label1" textWrap={true} text= "{item.title}" />
       <label class="line"/>
-      <label class="label2" marginTop="10" text= "By {article.author}" />
-      <label class="label3" textWrap={true} text= "{article.description}" />
+      <label class="label2" marginTop="10" text= "By {item.author}" />
+      <label class="label3" textWrap={true} text= "{item.description}" />
       <image class="img-rounded" marginTop="10"
-        src = {article.urlToImage}
+        src = {item.urlToImage}
         stretch = "aspectFit"
       />
       <button marginTop="10" on:tap = { () => closeModal()} text="close"/>              

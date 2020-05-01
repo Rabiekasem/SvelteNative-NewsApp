@@ -9,6 +9,7 @@
   import Football from "./Football.svelte" 
   import Contact from "./Contact.svelte" 
   import App from "../App.svelte"
+  import ArticleSearchPage from "../modals/ArticleSearchPage.svelte"
 
   import SubPage from "../modals/SubPage.svelte"
   
@@ -78,8 +79,9 @@
   }
 
   const articleSearch = async() =>{
-    await showModal({
+      showModal({
       page: ArticleSearchPage,
+      fullscreen: true,
       props:{
         articles:articles
       }
@@ -90,7 +92,6 @@
     fetch(NewsApi)
     .then(response => response.json())
     .then(json => {
-      console.log("HELLO HELLO", json)
       articles = json.articles
       })
     .catch(error => console.log(error))
@@ -99,22 +100,51 @@
 </script>
 
 
-<page class="page" actionBarHidden={true}>
+<page class="page" actionBarHidden={false}>
+  <actionBar title="Search">
+      <actionItem on:tap={articleSearch}
+      android.systemIcon="ic_menu_search" android.position = "right"
+      ios.systemIcon="10" ios.position="right"
+      />
+  </actionBar>
+
   <scrollView class="scroll">
   <stackLayout>
-
+  
       <stackLayout class="stackStack">
         <scrollView orientation="horizontal">
-          <flexboxLayout class="buttonsMain" alignItems="flex-start" backgroundColor="">
-    	      <button text="Main" width="70" height="30" backgroundColor="" on:tap={() => showMain()}/>
-    	      <button text="News" width="70" height="30" backgroundColor="" />
-    	      <button text="Games" width="70" height="30" backgroundColor="" on:tap={() => showGames()}/>
-            <button text="Global" width="70" height="30" backgroundColor="" on:tap={() => showGlobal()}/>
-            <button text="Football" width="70" height="30" backgroundColor="" on:tap={() => showFootball()}/>
-            <button text="Contact" width="70" height="30" backgroundColor="" on:tap={() => showContact()}/>
+          <flexboxLayout class="buttonsMain" alignItems="flex-start" backgroundColor="" orientation="horizontal" height="60">
+    	      
+              <flexboxLayout flexDirection="column" on:tap={() => showMain()}>
+        	      <button text="Main" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/home.png" stretch="fit" width="10" height="10"/>
+              </flexboxLayout>
+              <flexboxLayout flexDirection="column">
+                <button text="News" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/news.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+              <flexboxLayout flexDirection="column" on:tap={() => showGames()}>
+                <button text="Games" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/basketball.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+              <flexboxLayout flexDirection="column" on:tap={() => showGlobal()}>
+                <button text="Global" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/football.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+              <flexboxLayout flexDirection="column" on:tap={() => showFootball()}>
+                <button text="Players" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/players.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+        	    <flexboxLayout flexDirection="column" on:tap={() => showContact()}>
+                <button text="Contact" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/contact.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+
           </flexboxLayout>
         </scrollView>
       </stackLayout>
+      
+      
     
       <stackLayout>
           <scrollView height="100%">
@@ -143,6 +173,10 @@
 
 
 <style>
+
+  .basket2{
+    margin: auto 40;
+}
 
   .scroll{
     background-color: #e2e2e2;

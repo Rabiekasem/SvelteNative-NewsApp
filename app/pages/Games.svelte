@@ -95,13 +95,33 @@
 
         <stackLayout>
         <scrollView orientation="horizontal">
-            <flexboxLayout class="buttonsMain" alignItems="flex-start" backgroundColor="">
- 	            <button text="Main" width="70" height="30" backgroundColor="" on:tap={() => showMain()}/>
- 	            <button text="News" width="70" height="30" backgroundColor="" on:tap={() => showNews()}/>
- 	            <button text="Games" width="70" height="30" backgroundColor=""/>
-              <button text="Global" width="70" height="30" backgroundColor="" on:tap={() => showGlobal()}/>
-              <button text="Football" width="70" height="30" backgroundColor="" on:tap={() => showFootball()}/>
-              <button text="Contact" width="70" height="30" backgroundColor="" on:tap={() => showContact()}/>
+            <flexboxLayout class="buttonsMain" alignItems="flex-start" backgroundColor="" orientation="horizontal" height="60">
+ 	            
+              <flexboxLayout flexDirection="column" on:tap={() => showMain()}>
+        	      <button text="Main" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/home.png" stretch="fit" width="10" height="10"/>
+              </flexboxLayout>
+              <flexboxLayout flexDirection="column" on:tap={() => showNews()}>
+                <button text="News" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/news.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+              <flexboxLayout flexDirection="column">
+                <button text="Games" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/basketball.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+              <flexboxLayout flexDirection="column" on:tap={() => showGlobal()}>
+                <button text="Global" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/football.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+              <flexboxLayout flexDirection="column" on:tap={() => showFootball()}>
+                <button text="Players" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/players.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+        	    <flexboxLayout flexDirection="column" on:tap={() => showContact()}>
+                <button text="Contact" width="70" height="30" backgroundColor="black" color="white"/>
+                <image class="basket2" src="~/images/contact.png" stretch="fit" width="10" height="10" />
+              </flexboxLayout>
+
             </flexboxLayout>
         </scrollView>
         </stackLayout>
@@ -137,6 +157,11 @@
   .scroll{
     background-color: #e2e2e2;
  } 
+
+  .basket2{
+    margin: auto 40;
+  }
+
   .page{
     background-color: #e2e2e2;
   } 

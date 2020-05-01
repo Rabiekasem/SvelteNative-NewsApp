@@ -5,7 +5,7 @@
 <page class="page">
   <stackLayout>
     <stackLayout> 
-      <button class="button" text="back" on:tap={() => closeModal()}/>
+      <button class="button" text="Back to main page" on:tap={() => closeModal()}/>
     </stackLayout>
     
     <stackLayout>
@@ -24,7 +24,10 @@
  }
  .button{
   width: 100%;
-  background-color: white;
-  margin: 0;
+   background-color: gray;
+   color: white;
+   margin: 0;
+   font-size: 20; 
+   font-family: 'Times New Roman', Times, serif;
  }
 </style>
