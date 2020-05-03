@@ -138,10 +138,10 @@
           <scrollView height="100%">
             <stackLayout class="articles" >
               {#each articles as article}
-                <cardView class="card" elevation="100" margin="25" height="400" width="90%" radius="20">
+                <cardView class="card" elevation="100" margin="25" height="400" width="90%" radius="20" shadowRadius="15">
                   <flexboxLayout class="article" height="100%" flexDirection="row"  on:tap={() => showfootballGames(article)}>
                       <stackLayout class="lastStack">
-                        <label class="p text-center" text ="{article.title}" />
+                        <label class="h1 text-center" text ="{article.title}" />
                         <label class="p text-center" text ="{article.competition.name}" />
                         <label class="p text-center" text ="{article.competition.url}" />
                         <webView class="video" src="{article.embed}" />
@@ -179,9 +179,13 @@
       background-color: rgb(212, 212, 212);
     }
 
-    .p{
-      margin-left: 12;
-    }
+  .p{
+    margin-left: 12;
+  }
+
+  .h1{
+    font-size: 18;
+  }
 
   .buttonsMain{
     display: flex;
