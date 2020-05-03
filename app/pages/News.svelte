@@ -179,7 +179,7 @@
 }
 
   .scroll{
-    background-color: #e2e2e2;
+    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
  } 
 
   .page{
@@ -187,7 +187,7 @@
   }  
 
   .card{
-      background-color: #e9e9e9;
+      background-color: rgb(212, 212, 212);
     }
 
     .p{

@@ -9,7 +9,6 @@
   import Games from "./Games.svelte"
   import App from "../App.svelte"
   
-  
 
   const showMain = async() =>{
         await navigate({
@@ -134,27 +133,24 @@
 
         <stackLayout>
           <scrollView>
-            <flexboxLayout flexDirection="column" backgroundColor="">
-               <textField class="text" bind:text="{firstname}" hint="First name" width="250" maxLength="10" backgroundColor="wheat"/>
-               <textField class="text" bind:text="{lastname}" hint="Last name" width="250" maxLength="10" backgroundColor="wheat"/>
-               <textField class="text" bind:text="{email}" hint="E-post" width="250" KeyboardType="email" backgroundColor="wheat"/>
-               <textView class="text" bind:text="{feedback}" hint="Your feedback" backgroundColor="lightgray"/>
+            <flexboxLayout class="mainFlex" flexDirection="column" height="100%">
+               <textField class="text" bind:text="{firstname}" hint="First name" width="250" maxLength="10" />
+               <textField class="text" bind:text="{lastname}" hint="Last name" width="250" maxLength="10" />
+               <textField class="text" bind:text="{email}" hint="E-post" width="250" KeyboardType="email" />
+               <textView class="text text1" bind:text="{feedback}" hint="Your feedback"/>
 
                <stackLayout>
                     <absoluteLayout  class= "reactionBar">
-                         <image left="90" top="10" class="like" src="~/images/like.png" tintColor="{likeColor}"
+                         <image left="60" top="10" class="like" src="~/images/like.png" tintColor="{likeColor}"
                                 stretch="aspectFit" on:tap={() => changeColor()} />
-                         <image left="180" top="10" class="like" src="~/images/dislike.png" tintColor="{likeColorTwo}"
+                         <image left="150" top="10" class="like" src="~/images/dislike.png" tintColor="{likeColorTwo}"
                                 stretch="aspectFit" on:tap={() => changeColor1()} />
                     </absoluteLayout >
                </stackLayout>
-               <button class="button" text="send" width="90" height="60" backgroundColor="" on:tap={() => doit()}/>
+               <button class="button" text="Send" width="90" height="60" fontSize="22" on:tap={() => doit()}/>
             </flexboxLayout>
           </scrollView>
         </stackLayout>
-
-        
-            
             
     </stackLayout>   
     </scrollView> 
@@ -164,7 +160,7 @@
 <style>
 
   .scroll{
-    background-color: #e2e2e2;
+    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
  } 
 
   .basket2{
@@ -174,6 +170,11 @@
   .page{
     background-color: #e2e2e2;
   } 
+
+  .mainFlex{
+    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
+    margin: 50 20;
+  }
   
   .buttonsMain{
     display: flex;
@@ -189,14 +190,30 @@
     color: whitesmoke;
   }
 
+  .reactionBar{
+    margin: 20 20;
+  }
+
   .text{
       text-align: center;
       border-radius: 18;
+      margin-bottom: 20;
+      color: white;
+  }
+  
+  .text1{
+    background-image: linear-gradient(10deg, #8baaaa 0%, #ae8b9c 100%);
   }
 
   .button{
-      background-color: #e2b0b0;
+      background-image: linear-gradient(5deg, #8baaaa 0%, #ae8b9c 100%);
       border-radius: 18;
+      margin-bottom: 20;
+  }
+
+  ::placeholder{
+    color: beige;
+    font-size: 18;
   }
   
   .like{

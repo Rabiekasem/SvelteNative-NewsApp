@@ -254,7 +254,7 @@
     margin: auto 40;
 }
  .scroll{
-    background-color: #e2e2e2;
+    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
  } 
 
  .mainText{
@@ -389,6 +389,7 @@
      font-weight: 600;
      font-size: 40;
      margin-top: 5;
+     margin-bottom: 15;
  }
 
  .buttonsMain{
@@ -454,6 +455,9 @@
     background-color: rgb(207, 189, 224);
     border-radius: 40%;
     width: 60%;
+ }
+ .label3{
+     margin-top: 15;
  }
 
  @keyframes leftIn{

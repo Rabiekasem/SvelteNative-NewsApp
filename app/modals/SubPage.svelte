@@ -16,7 +16,7 @@
         src = {article.urlToImage}
         stretch = "aspectFit"
       />
-      <button marginTop="10" on:tap = { () => closeModal()} text="close"/>              
+      <button class="button" on:tap = { () => closeModal()} text="close"/>              
     </stackLayout>
   </scrollView>
 </page>
@@ -29,7 +29,14 @@
  }
 
  .page{
-    background-color: #e2e2e2;
+    background-color: rgb(212, 212, 212);
+ }
+
+ .button{
+    background-color: rgb(207, 189, 224);
+    border-radius: 40%;
+    width: 60%;
+    margin-top: 20;
  }
 
  .label1{

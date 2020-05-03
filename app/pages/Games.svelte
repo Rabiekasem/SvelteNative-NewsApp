@@ -155,7 +155,7 @@
 <style>
 
   .scroll{
-    background-color: #e2e2e2;
+    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
  } 
 
   .basket2{
@@ -165,7 +165,9 @@
   .page{
     background-color: #e2e2e2;
   } 
+
   .card{
+    border-radius: 10;
     background-color: #e9e9e9; 
     animation-name: fade;
     animation-duration: 0.5s;

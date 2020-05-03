@@ -24,14 +24,14 @@
 </script>
 
 <frame>
-   <page>
+   <page class="page">
     <gridLayout rows="80,80,*">
-    <button row = "0" text ="close" on:tap={closeModal} />
-    <searchBar row="1" hint="filter"
+    <button row = "0" text ="close" on:tap={closeModal} class="button"/>
+    <searchBar row="1" hint="filter" class="search"
     bind:text={searchInput}
     on:textChange={filterResults}
     />
-        <scrollView row="2">
+        <scrollView row="2" class="scroll">
           <stackLayout>
           {#each theSearch as item}
             <cardView class="card" elevation="40" margin="25" height="180" width="80%">
@@ -54,6 +54,22 @@
 <style>
 .articel img{
     width: 280;
+  }
+
+  .page{
+    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
+  }
+
+  .button{
+    background-color: rgb(207, 189, 224);
+    border-radius: 40%;
+    width: 60%;
+    margin-top: 20;
+    margin-bottom: 20;
+  }
+
+  .search{
+    background-color: rgb(216, 208, 223);
   }
   
   .author{
