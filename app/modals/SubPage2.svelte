@@ -5,7 +5,7 @@
 <page class="page">
   <stackLayout>
     <stackLayout> 
-      <button class="button" text="back" on:tap={() => closeModal()}/>
+      <button class="button" text="Back" on:tap={() => closeModal()}/>
     </stackLayout>
   
     <stackLayout>
@@ -20,8 +20,9 @@
 
 <style>
  .button{
-  width: 100%;
-  background-color: white;
-  margin: 0;
+  background-color: rgb(207, 189, 224);
+    border-radius: 40%;
+    width: 80%;
+    margin: 10;
  }
 </style>

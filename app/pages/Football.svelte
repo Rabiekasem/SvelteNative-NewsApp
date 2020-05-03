@@ -157,7 +157,7 @@
 <style>
 
   .scroll{
-    background-color: #e2e2e2;
+    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
  } 
 
  .basket2{
@@ -169,7 +169,7 @@
   } 
 
   .card{
-    background-color: #e9e9e9; 
+    background-color: rgb(212, 212, 212); 
     animation-name: fade;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
@@ -195,11 +195,6 @@
     background-color: rgb(0, 0, 0);
   }
   
-  .buttonsMain > button{
-    margin: 15 15;
-    background-color: rgb(0, 0, 0);
-    color: whitesmoke;
-  }
   .stackTwo > image {
     width: 100%;
     height: 100%;

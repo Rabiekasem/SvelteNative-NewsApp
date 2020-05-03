@@ -10,7 +10,7 @@
   <scrollView>
     <stackLayout class="stack">
       <stackLayout>
-        <button marginTop="10" on:tap = { () => closeModal()} text="close"/>
+        <button class="button" on:tap = { () => closeModal()} text="close"/>
         <label class="line"/>
       </stackLayout> 
       <webView class="video" height="100%" width="100%" src="{article.url}" />
@@ -29,12 +29,11 @@
     background-color: #e2e2e2;
  }
 
- .label1{
-   font-size: 40;
- }
-
- .label3{
-   font-size: 20;
+ .button{
+    background-color: rgb(207, 189, 224);
+    border-radius: 40%;
+    width: 60%;
+    margin-top: 20;
  }
  
  .line{

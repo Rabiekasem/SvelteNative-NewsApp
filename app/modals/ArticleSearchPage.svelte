@@ -24,7 +24,7 @@
 </script>
 
 <frame>
-   <page class="page">
+   <page class="page" actionBarHidden={true}>
     <gridLayout rows="80,80,*">
     <button row = "0" text ="close" on:tap={closeModal} class="button"/>
     <searchBar row="1" hint="filter" class="search"
@@ -52,9 +52,6 @@
 
 
 <style>
-.articel img{
-    width: 280;
-  }
 
   .page{
     background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
@@ -79,6 +76,7 @@
     color: rgb(128, 87, 124);
     font-size: 18;
   }
+
   .lastStack{
     margin: 20 auto;
     padding: 10;

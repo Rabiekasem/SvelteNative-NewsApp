@@ -88,7 +88,7 @@
     onMount (async() => {
     await fetch("https://www.scorebat.com/video-api/v1/")
     .then (response => response.json())
-    .then(json => {
+    .then (json => {
       articles = json
       })
     .catch(error => console.log(error))
@@ -138,7 +138,7 @@
           <scrollView height="100%">
             <stackLayout class="articles" >
               {#each articles as article}
-                <cardView class="card" elevation="100" margin="25" height="400" width="100%">
+                <cardView class="card" elevation="100" margin="25" height="400" width="90%" radius="20">
                   <flexboxLayout class="article" height="100%" flexDirection="row"  on:tap={() => showfootballGames(article)}>
                       <stackLayout class="lastStack">
                         <label class="p text-center" text ="{article.title}" />
@@ -164,7 +164,7 @@
 <style>
 
   .scroll{
-    background-color: #dbbaba;
+    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
  } 
 
   .basket2{
@@ -176,7 +176,7 @@
   }  
 
   .card{
-      background-color: #e9e9e9;
+      background-color: rgb(212, 212, 212);
     }
 
     .p{
@@ -191,12 +191,7 @@
     background-color: rgb(0, 0, 0);
 
   }  
-  .buttonsMain > button{
-    background-color: rgb(0, 0, 0);
-    margin: 15 15;
-    color: whitesmoke;
-     
-  }  
+  
   .article{
     padding: 10;
     margin: 10;

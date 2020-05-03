@@ -29,14 +29,14 @@
         })
       }
 
-      const showGlobal = async() =>{
-    await navigate({
-      page: Global,
-      props:{
-        msg:""
+  const showGlobal = async() =>{
+        await navigate({
+          page: Global,
+          props:{
+            msg:""
+          }
+        })
       }
-    })
-  }
   
   const showNews = async() =>{
         await navigate({
@@ -75,7 +75,7 @@
             }
         })
   }  
-  const getProducts = () => {
+  const getProducts = async() => {
         fetch(productsUrl)
         .then(response => response.json())
         .then(json => FirestoreParser(json))
@@ -126,7 +126,7 @@
         </scrollView>
         </stackLayout>
     
-        
+        <stackLayout>
         <scrollView class="scrollOne" height="100%">
             <stackLayout class="stackOne">
               {#each items as item}
@@ -146,6 +146,7 @@
               {/each}
             </stackLayout>
         </scrollView>
+        </stackLayout>
         
     </stackLayout>   
     </scrollView> 
@@ -167,8 +168,7 @@
   } 
 
   .card{
-    border-radius: 10;
-    background-color: #e9e9e9; 
+    background-color: rgb(221, 210, 210);
     animation-name: fade;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
@@ -193,11 +193,6 @@
     background-color: rgb(0, 0, 0);
   }
   
-  .buttonsMain > button{
-    margin: 15 15;
-    background-color: rgb(0, 0, 0);
-    color: whitesmoke;
-  }
   .stackTwo > image {
     width: 80;
     height: 80;

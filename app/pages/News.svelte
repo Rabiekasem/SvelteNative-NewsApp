@@ -79,7 +79,7 @@
   }
 
   const articleSearch = async() =>{
-      showModal({
+      await showModal({
       page: ArticleSearchPage,
       fullscreen: true,
       props:{
@@ -101,7 +101,7 @@
 
 
 <page class="page" actionBarHidden={false}>
-  <actionBar title="Search">
+  <actionBar title="Search" class="Bar">
       <actionItem on:tap={articleSearch}
       android.systemIcon="ic_menu_search" android.position = "right"
       ios.systemIcon="10" ios.position="right"
@@ -174,25 +174,30 @@
 
 <style>
 
+  .Bar{
+    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
+    color: white;
+  }
+
   .basket2{
     margin: auto 40;
-}
+  }
 
   .scroll{
     background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
- } 
+  } 
 
   .page{
     background-color: #e2e2e2;
   }  
 
   .card{
-      background-color: rgb(212, 212, 212);
-    }
+    background-color: rgb(212, 212, 212);
+  }
 
-    .p{
-      margin-left: 12;
-    }
+  .p{
+    margin-left: 12;
+  }
 
   .buttonsMain{
     display: flex;
@@ -200,14 +205,8 @@
     justify-content: center;
     padding: 0;
     background-color: rgb(0, 0, 0);
-
   }  
-  .buttonsMain > button{
-    background-color: rgb(0, 0, 0);
-    margin: 15 15;
-    color: whitesmoke;
-     
-  }  
+   
   .article{
     padding: 10;
     margin: 10;
@@ -232,18 +231,21 @@
       transform: scale(1)
     }
   }
+
   .articles{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
   }
+
   .line{
     width: 80%;
     height: 1;
     background-color: white;
     margin: 15;
   }
+  
   .img{
     width: 280;
   }
@@ -255,6 +257,7 @@
     color: rgb(128, 87, 124);
     font-size: 18;
   }
+
   .lastStack{
     margin: 20 auto;
   }

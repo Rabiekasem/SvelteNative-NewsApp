@@ -62,6 +62,7 @@
 
   let likeColor= ""
   let likeColorTwo= ""
+  let theText = ""
 
   const doit = () => {
       console.log (
@@ -79,6 +80,8 @@
       feedback = ""
       likeColor= ""
       likeColorTwo= ""
+
+      theText = "Thanks for your feedback"
   }
 
   const changeColor = () => {
@@ -148,6 +151,7 @@
                     </absoluteLayout >
                </stackLayout>
                <button class="button" text="Send" width="90" height="60" fontSize="22" on:tap={() => doit()}/>
+               <label text="{theText}" class="theFeedback"/>
             </flexboxLayout>
           </scrollView>
         </stackLayout>
@@ -172,7 +176,7 @@
   } 
 
   .mainFlex{
-    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
+    background-color: transparent;
     margin: 50 20;
   }
   
@@ -182,12 +186,6 @@
     justify-content: center;
     padding: 0;
     background-color: rgb(0, 0, 0);
-  }
-  
-  .buttonsMain > button{
-    margin: 15 15;
-    background-color: rgb(0, 0, 0);
-    color: whitesmoke;
   }
 
   .reactionBar{
@@ -206,8 +204,8 @@
   }
 
   .button{
-      background-image: linear-gradient(5deg, #8baaaa 0%, #ae8b9c 100%);
-      border-radius: 18;
+      background-color: rgba(207, 189, 224, 0.8);
+      border-radius: 40%;
       margin-bottom: 20;
   }
 
@@ -220,6 +218,10 @@
       width: 75;
       height: 90;
 
+  }
+
+  .theFeedback{
+    text-align: center;
   }
 
     

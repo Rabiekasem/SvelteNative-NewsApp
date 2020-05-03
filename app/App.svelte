@@ -250,9 +250,9 @@
 
 <style>
 .basket2{
-    
     margin: auto 40;
 }
+
  .scroll{
     background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
  } 
@@ -261,7 +261,7 @@
     font-size: 40;
     font-family: 'Times New Roman', Times, serif;  
     animation-name: change;
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-direction: alternate;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
@@ -305,7 +305,6 @@
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
  }
-
 
  .reactionBar{
      margin: 5 25%;
@@ -405,16 +404,6 @@
     animation-timing-function: ease-in;
  }
 
- .buttonsMain > image{
-     margin: 15 15;
- }
-
- .buttonsMain > button{
-    margin: 15 15;
-    background-color: rgb(0, 0, 0);
-    color: whitesmoke;
- }
-
  .stack2{
     animation-name: fadeToLeft;
     animation-duration: 0.5s;
@@ -432,7 +421,6 @@
      margin-bottom: 20;
  }
 
-
  .logoImg{
     animation-name: fadeToRight;
     animation-duration: 0.5s;
@@ -444,11 +432,11 @@
     margin-top: -45;
  }
 
-
  .label1{
     font-weight: 600;
     font-size: 40;
  }
+
  .label2{
     margin-top: 10;
     margin-top: 40;
@@ -456,6 +444,7 @@
     border-radius: 40%;
     width: 60%;
  }
+
  .label3{
      margin-top: 15;
  }
