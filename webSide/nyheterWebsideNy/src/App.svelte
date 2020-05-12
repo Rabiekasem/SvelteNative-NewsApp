@@ -36,7 +36,7 @@ onMount( async () => {
     <header class="header">
         <nav class="header-nav">
 
-        <Button>Change Color</Button>
+        <Button id="colorBtn">Change Color</Button>
         <a href="#weAre">We are</a>
 		<a href="#sec2">Our work</a>
         <a href="#contact">Contact</a>
@@ -336,6 +336,9 @@ body{
 .fa:hover {
     opacity: 0.7;
 }
+
+
+
 @media screen and (max-width: 480px) and (max-width: 960px){
   #main, #news{
 	  max-height: 100%;
@@ -346,8 +349,13 @@ body{
 	  height: auto;
 	  margin: 5px 0;
   }
+
+  .header-nav{
+	  padding: 5px 20px;
+  }
+
   #weAre, #sec{
-	  width: 100%;
+	  max-width: 100%;
 	  min-height: 100%;
 	  padding: 10px auto;
   }
@@ -357,6 +365,11 @@ body{
 	  justify-content: center;
 	  padding: 50px;
   }
+
+  #newsArticle p {
+	  padding: 5px
+  }
+
   .person{
 	  margin: auto auto;
   }
