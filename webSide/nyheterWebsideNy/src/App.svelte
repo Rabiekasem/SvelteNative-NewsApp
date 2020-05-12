@@ -1,24 +1,19 @@
 <script>
-
 import Button from './Button.svelte'
 import { onMount } from "svelte";
 import {db} from "./firebase.js"
-
 	
 let personer = [];
-
 onMount( async () => {
-		const response = await fetch("https://randomuser.me/api/?results=3");
+		const response = await fetch("https://randomuser.me/api/?results=5");
 		const json = await response.json();
 		personer = json.results;
 		console.log(personer);
 	} );
-
 	let name = "";
 	let email = "";
 	let phone = "";
 	let textArea = "";
-
     const contactUs = db.collection("Users");
     const sendForm = () => {
 	contactUs.doc(email)
@@ -29,13 +24,11 @@ onMount( async () => {
 		Phone: phone
 		
 	});
-
 	name="";
 	email="";
 	phone="";
 	textArea="";
 	}
-
 </script>
 
 <body>
@@ -127,18 +120,15 @@ onMount( async () => {
 
 
 <style>
-
 body{
 	margin: 0;
 }
-
 #main{
 	scroll-behavior: smooth;
 	width: 100%;
 	height: 100%;
 	margin: 0;
 }
-
 .header{
     height: 100px;
     width: 100%;
@@ -146,7 +136,6 @@ body{
 	margin: 5px 10;
 	
 }
-
 .header-nav {
     list-style-type: none; 
     margin: 5px 30px;
@@ -156,12 +145,9 @@ body{
     justify-content: center;
     align-items: center;
 }
-
 .header-nav a {
     padding: 5px 30px;
 }
-
-
     :global(body) {
 		background-color: rgb(226, 226, 226);
 		color: #0084f6;
@@ -171,7 +157,6 @@ body{
 		background-color: #7c7c8a;
 		color: #bfc2c7;
 	}
-
 #news{
 	min-width: 100%;
 	min-height: 100%;
@@ -187,11 +172,9 @@ body{
 	color: white;
 	overflow: hidden;
 }
-
 #newsArticle{
 	overflow: hidden;
 }
-
 #newsArticle h1{
 	background-color: rgba(247, 140, 140, 0.7);
 	font-size: 40px;
@@ -200,7 +183,6 @@ body{
 	background-color: rgba(175, 165, 165, 0.5);
 	font-size: 18px;
 }
-
 #weAre{
 	--auto-grid-min-size: 250px;
     display: grid;
@@ -212,83 +194,70 @@ body{
 	margin: 10px auto;
 	gap: 10px;
 }
-
 #sec{
 	margin: 10px auto;
 	overflow: hidden;
 }
-
 #sec2{
 	display: grid;
 	justify-content: center;
 	align-items: center;
-
 	width: 100%;
 	min-height: 800px;
 	max-height: auto ;
 	margin: 30px auto;
 	overflow: hidden;
 }
-
 .phoneImage{
-	width: 80%;
-	height: 500px;
+	width: 50%;
 	margin: 10px auto;
 	border-radius: 40% 10%;
 }
-
 #all{
 	display: grid;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
 }
-
 #texts{
-	width: 600px;
+	max-width: 600px;
 	max-width: auto;
 	margin: 10px auto;
 }
-
 #texts h1{
 	font-size: 40px;
 }
-
 .person{
-	max-width: 200px;
+	
 	height: 250px;
 	min-height: 250px;
 	margin: 30px auto;
 	display: grid;
-	grid-auto-flow: row
+	grid-auto-flow: row;	
+	justify-items: center;
 }
-
 .person h1 {
     font-size: 1.25rem;
     color: darkorange;
 	text-align: center;
 }
-
-
 .person img {
-    width: 100%;
+    width: 150px;
 	height: 150px;
 	border-radius: 50%;
+	object-fit: cover;
 	box-shadow: 6px 6px 9px #7c7c8a;
 }
-
 .line{
 	width: 60%;
 	border: gray solid 1px;
 	margin: 60px auto;
 }
-
 #contactForm{
 	max-width: auto;
 	text-align: center;
 	background-color: rgb(108, 167, 108);
 }
-
 #contactSec{
 	max-width: 100%;
     display: grid;
@@ -296,11 +265,9 @@ body{
 	justify-content: center;
 	background-color: #3B5998;
 }
-
 #contactForm h1{
 	font-weight: 200;
 }
-
 .txtb{
 	border: 0.5px solid gray;
 	padding: 12px 18px;
@@ -308,7 +275,6 @@ body{
 	margin-top: 6px;
 	width: 400px;
 }
-
 .txtb label{
 	display: block;
 	text-align: left;
@@ -323,11 +289,9 @@ body{
 	font-size: 18px;
 	margin-top: 6px;
 }
-
 .txtb textarea{
 	height: 200px;
 }
-
 #contactForm button{
 	display: inline-block;
 	padding: 14px 0;
@@ -338,11 +302,9 @@ body{
 	width: 100%;
 	text-transform: uppercase;
 }
-
 #footer{
 	margin: 80px auto;
 }
-
 #footerDiv{
 	display: grid;
 	grid-auto-flow: column;
@@ -350,8 +312,6 @@ body{
 	justify-content: center;
 	grid-gap: 80px;
 }
-
-
 .fa {
   padding: 20px;
   font-size: 30px;
@@ -361,61 +321,48 @@ body{
   margin: 5px 2px;
   border-radius: 48%;
 }
-
 .fa-twitter {
   background: #55ACEE;
   color: white;
 }
-
 .fa-instagram {
   background: #E1306C;
   color: white;
 }
-
 .fa-facebook {
   background: #3B5998;
   color: white;
 }
-
 .fa:hover {
     opacity: 0.7;
 }
-
-
-
 @media screen and (max-width: 480px) and (max-width: 960px){
   #main, #news{
-	  width: 100%;
-	  height: 100%;
-	  min-width: 540px;
+	  max-height: 100%;
   }
   
   .header{
-	  width: auto;
+	  padding: 8px;
 	  height: auto;
 	  margin: 5px 0;
   }
-
   #weAre, #sec{
 	  width: 100%;
-	  height: 100%;
+	  min-height: 100%;
 	  padding: 10px auto;
   }
   #sec{
 	  display: grid;
 	  align-items: center;
 	  justify-content: center;
-	  padding: auto 50px;
+	  padding: 50px;
   }
-
   .person{
 	  margin: auto auto;
   }
-
   #contactForm{
 	  width: auto;
   }
-
   #contactSec{
 	  
 	  width: auto;
@@ -426,11 +373,9 @@ body{
 	  width: 80%;
 	  margin: 0;
   }
-
   #contactForm button{
 	  margin: 20px auto;
   }
-
   #footerDiv{
 	grid-gap: 30px;
   }
@@ -440,10 +385,8 @@ body{
   }
   
 }
-
 @viewport{
 	zoom: 1.0;
 	width: extend-to-zoom;
 }
-
 </style>
