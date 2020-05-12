@@ -16,10 +16,6 @@
   const apiKey = "e14f4ede420e450baafed861c6893a83"
   const NewsApi = `https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${apiKey}`
   
-  import { registerNativeViewElement } from 'svelte-native/dom'
-    registerNativeViewElement("cardView", () => 
-      require("@nstudio/nativescript-cardview").CardView
-    )
   
   let articles = []
   

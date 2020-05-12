@@ -13,11 +13,6 @@
   import SubPage5 from "../modals/SubPage5.svelte"
 
   
-  import { registerNativeViewElement } from 'svelte-native/dom'
-    registerNativeViewElement("cardView", () => 
-      require("@nstudio/nativescript-cardview").CardView
-    )
-  
   let articles = []
   
   const showMain = async() =>{

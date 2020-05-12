@@ -3,11 +3,6 @@
    import SubPage from "../modals/SubPage.svelte"
    import ArticleSearchPage from "../modals/ArticleSearchPage.svelte"
 
-   import { registerNativeViewElement } from 'svelte-native/dom'
-    registerNativeViewElement("cardView", () => 
-      require("@nstudio/nativescript-cardview").CardView
-    )
-
 
    const showPage = async(article) =>{
     await showModal({

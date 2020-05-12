@@ -16,9 +16,6 @@
   const productsUrl = baseUrl + "projects/my-first-firestore-proje-9c783/databases/(default)/documents/nba-data-2"  
   import { registerNativeViewElement } from 'svelte-native/dom'
 
-  registerNativeViewElement("cardView", () => 
-    require("@nstudio/nativescript-cardview").CardView
-  )  
 
   const showMain = async() =>{
         await navigate({

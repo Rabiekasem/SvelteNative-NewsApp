@@ -14,11 +14,7 @@
   let items = []
   const baseUrl = "https://firestore.googleapis.com/v1/"
   const productsUrl = baseUrl + "projects/my-first-firestore-proje-9c783/databases/(default)/documents/football-data"  
-  import { registerNativeViewElement } from 'svelte-native/dom'
-
-  registerNativeViewElement("cardView", () => 
-    require("@nstudio/nativescript-cardview").CardView
-  )  
+ 
 
   const showMain = async() =>{
         await navigate({
