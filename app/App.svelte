@@ -4,9 +4,9 @@
   import {showModal} from "svelte-native"
   import Contact from "./pages/Contact.svelte"
   import News from "./pages/News.svelte"
-  import Games from "./pages/Games.svelte"
   import Global from "./pages/Global.svelte"
   import Football from "./pages/Football.svelte"
+  import MainBar from "./components/Mainbar.svelte"
   
   import SubPage3 from "./modals/SubPage3.svelte"
   import SubPage4 from "./modals/SubPage4.svelte" 
@@ -17,53 +17,7 @@
     registerNativeViewElement("cardView", () => 
       require("@nstudio/nativescript-cardview").CardView
     )
-
-
-    
-  const showNews = async() =>{
-        await navigate({
-            page: News,
-            props:{
-                msg:""
-            }
-        })
-    } 
-
-   const showGames = async() =>{
-        await navigate({
-            page: Games,
-            props:{
-                msg:""
-            }
-        })
-    } 
-
-    const showFootball = async() =>{
-        await navigate({
-            page: Football,
-            props:{
-                msg:""
-            }
-        })
-    } 
-
-    const showContact = async() =>{
-        await navigate({
-            page: Contact,
-            props:{
-                msg:""
-            }
-        })
-    } 
-
-    const showGlobal = async() =>{
-        await navigate({
-            page: Global,
-            props:{
-                msg:""
-            }
-        })
-    } 
+  
 
   const lebronArticle = async() =>{
         await showModal({
@@ -129,34 +83,7 @@
     
             <stackLayout>
             <scrollView orientation="horizontal">
-                <flexboxLayout class="buttonsMain" alignItems="flex-start" backgroundColor="" orientation="horizontal" height="60">
-                    
-                    <flexboxLayout flexDirection="column">
-        	           <button text="Main" width="70" height="30" backgroundColor="black" color="white"/>
-                       <image class="basket2" src="~/images/home.png" stretch="fit" width="10" height="10"/>
-                    </flexboxLayout>
-                    <flexboxLayout flexDirection="column" on:tap={() => showNews()}>
-                        <button text="News" width="70" height="30" backgroundColor="black" color="white"/>
-                        <image class="basket2" src="~/images/news.png" stretch="fit" width="10" height="10" />
-                    </flexboxLayout>
-                    <flexboxLayout flexDirection="column" on:tap={() => showGames()}>
-                        <button text="Games" width="70" height="30" backgroundColor="black" color="white"/>
-                        <image class="basket2" src="~/images/basketball.png" stretch="fit" width="10" height="10" />
-                    </flexboxLayout>
-                    <flexboxLayout flexDirection="column" on:tap={() => showGlobal()}>
-                        <button text="Global" width="70" height="30" backgroundColor="black" color="white"/>
-                        <image class="basket2" src="~/images/football.png" stretch="fit" width="10" height="10" />
-                    </flexboxLayout>
-                    <flexboxLayout flexDirection="column" on:tap={() => showFootball()}>
-                        <button text="Players" width="70" height="30" backgroundColor="black" color="white"/>
-                        <image class="basket2" src="~/images/players.png" stretch="fit" width="10" height="10" />
-                    </flexboxLayout>
-        	        <flexboxLayout flexDirection="column" on:tap={() => showContact()}>
-                        <button text="Contact" width="70" height="30" backgroundColor="black" color="white"/>
-                        <image class="basket2" src="~/images/contact.png" stretch="fit" width="10" height="10" />
-                    </flexboxLayout>
-                    
-                </flexboxLayout>
+                <MainBar />
             </scrollView> 
             </stackLayout>
 
@@ -254,9 +181,7 @@
 
 
 <style>
-.basket2{
-    margin: auto 40;
-}
+
 
  .scroll{
     background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
@@ -396,18 +321,7 @@
      margin-bottom: 15;
  }
 
- .buttonsMain{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    background-color: rgb(0, 0, 0);
-
-    animation-name: leftIn;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in;
- }
+ 
 
  .stack2{
     animation-name: fadeToLeft;
@@ -454,10 +368,7 @@
      margin-top: 15;
  }
 
- @keyframes leftIn{
-    from { transform: translateY(-100); }
-    to { transform: translateY(0); }
- }
+ 
  @keyframes fadeToLeft{
     from { transform: translateX(-100); }
     to { transform: translateX(0); }

@@ -34,7 +34,7 @@
         <scrollView row="2" class="scroll">
           <stackLayout>
           {#each theSearch as item}
-            <cardView class="card" elevation="40" margin="25" height="180" width="80%">
+            <cardView class="card" elevation="40" margin="25" height="180" width="80%" radius="40">
                 <flexboxLayout class="article" height="100%" flexDirection="row" on:tap={() => showPageCopy(item)}>
                     <image src="{item.urlToImage}" class="img-rounded img" stretch="fill" />
                     <stackLayout class="lastStack" height="100%">

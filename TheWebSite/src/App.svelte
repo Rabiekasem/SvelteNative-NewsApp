@@ -6,7 +6,7 @@ import {db} from "./firebase.js"
 
 let personer = [];
 onMount( async () => {
-		const response = await fetch("https://randomuser.me/api/?results=6");
+		const response = await fetch("https://randomuser.me/api/?results=5");
 		const json = await response.json();
 		personer = json.results;
 		console.log(personer);

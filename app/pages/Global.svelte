@@ -3,8 +3,8 @@
   import {goBack} from "svelte-native"
   import {navigate} from "svelte-native"
   import {showModal} from 'svelte-native'
+  import MainBar from "../components/Mainbar.svelte"
 
-  import Games from "./Games.svelte"
   import News from "./News.svelte"
   import Football from "./Football.svelte"
   import Contact from "./Contact.svelte"
@@ -15,51 +15,6 @@
   
   let articles = []
   
-  const showMain = async() =>{
-    await navigate({
-      page: App,
-      props:{
-        msg:""
-      }
-    })
-  }
-
-  const showGames = async() =>{
-    await navigate({
-      page: Games,
-      props:{
-        msg:""
-      }
-    })
-  }
-
-  const showFootball = async() =>{
-    await navigate({
-      page: Football,
-      props:{
-        msg:""
-      }
-    })
-  }
-
-  const showContact = async() =>{
-        await navigate({
-            page: Contact,
-            props:{
-                msg:""
-            }
-        })
-    } 
-
-
-  const showNews = async() =>{
-        await navigate({
-            page: News,
-            props:{
-                msg:""
-            }
-        })
-    } 
 
   const showfootballGames = async(article) =>{
     await showModal({
@@ -98,34 +53,7 @@
 
       <stackLayout class="stackStack">
         <scrollView orientation="horizontal">
-          <flexboxLayout class="buttonsMain" alignItems="flex-start" backgroundColor="" orientation="horizontal" height="60">
-    	      
-              <flexboxLayout flexDirection="column" on:tap={() => showMain()}>
-        	      <button text="Main" width="70" height="30" backgroundColor="black" color="white"/>
-                <image class="basket2" src="~/images/home.png" stretch="fit" width="10" height="10"/>
-              </flexboxLayout>
-              <flexboxLayout flexDirection="column" on:tap={() => showNews()}>
-                <button text="News" width="70" height="30" backgroundColor="black" color="white"/>
-                <image class="basket2" src="~/images/news.png" stretch="fit" width="10" height="10" />
-              </flexboxLayout>
-              <flexboxLayout flexDirection="column" on:tap={() => showGames()}>
-                <button text="Games" width="70" height="30" backgroundColor="black" color="white"/>
-                <image class="basket2" src="~/images/basketball.png" stretch="fit" width="10" height="10" />
-              </flexboxLayout>
-              <flexboxLayout flexDirection="column">
-                <button text="Global" width="70" height="30" backgroundColor="black" color="white"/>
-                <image class="basket2" src="~/images/football.png" stretch="fit" width="10" height="10" />
-              </flexboxLayout>
-              <flexboxLayout flexDirection="column" on:tap={() => showFootball()}>
-                <button text="Players" width="70" height="30" backgroundColor="black" color="white"/>
-                <image class="basket2" src="~/images/players.png" stretch="fit" width="10" height="10" />
-              </flexboxLayout>
-        	    <flexboxLayout flexDirection="column" on:tap={() => showContact()}>
-                <button text="Contact" width="70" height="30" backgroundColor="black" color="white"/>
-                <image class="basket2" src="~/images/contact.png" stretch="fit" width="10" height="10" />
-              </flexboxLayout>
-
-          </flexboxLayout>
+          <MainBar />
         </scrollView>
       </stackLayout>
     
@@ -162,10 +90,6 @@
     background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
  } 
 
-  .basket2{
-    margin: auto 40;
-  }
-
   .page{
     background-color: #e2e2e2;
   }  
@@ -181,15 +105,6 @@
   .h1{
     font-size: 18;
   }
-
-  .buttonsMain{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    background-color: rgb(0, 0, 0);
-
-  }  
   
   .article{
     padding: 10;
