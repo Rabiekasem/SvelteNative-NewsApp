@@ -70,6 +70,9 @@
         </scrollView>
       </stackLayout>
       
+      <stackLayout>
+        <label text="Current news from all around the world" textWrap={true} class="mainText"/>
+      </stackLayout>
       
     
       <stackLayout>
@@ -107,11 +110,21 @@
 
   .scroll{
     background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
+    font-family: 'Times New Roman', Times, serif;
   } 
 
   .page{
-    background-color: #e2e2e2;
+    font-family: 'Times New Roman', Times, serif;
   }  
+
+  .mainText{
+    text-align: center;
+    font-size: 30;
+    font-weight: 600;
+    background-image: linear-gradient(240deg, #8baaaa 0%, #ae8b9c 100%);
+    color:  #f3eff1;
+    margin: 40 auto;
+  }
 
   .card{
     background-color: rgb(212, 212, 212);

@@ -6,7 +6,7 @@ import {db} from "./firebase.js"
 
 let personer = [];
 onMount( async () => {
-		const response = await fetch("https://randomuser.me/api/?results=5");
+		const response = await fetch("https://randomuser.me/api/?results=6");
 		const json = await response.json();
 		personer = json.results;
 		console.log(personer);
@@ -45,7 +45,7 @@ onMount( async () => {
             <Button>Change Color</Button>
             <a class="link" href="#weAre">We are</a>
 		    <a class="link" href="#sec2">Our work</a>
-            <a class="link" href="#contact">Contact</a>
+            <a class="link" href="#contactSec">Contact</a>
         </nav>
     </header> 
 
@@ -306,6 +306,7 @@ body{
 
 .phoneImage{
 	max-width: 60%;
+	min-height: 60%;
 	margin: 10px auto;
 	border-radius: 10%;
 	object-fit: cover;

@@ -43,6 +43,16 @@
       likeColorTwo = "black"
   }
 
+  let checkMe =""
+  const onCheckedChange = () => {
+    if(checkMe){
+      console.log("News subscribe")
+    }
+    else{
+      console.log("no News subscribe")
+    }
+  }
+
 
 </script>
 
@@ -64,6 +74,10 @@
                <textField class="text" bind:text="{lastname}" hint="Last name" width="250" maxLength="10" />
                <textField class="text" bind:text="{email}" hint="E-post" width="250" KeyboardType="email" />
                <textView class="text text1" bind:text="{feedback}" hint="Your feedback"/>
+               <flexboxLayout alignItems="flex-start">
+               <label text="Subscribe for more news" width="80%" height="80%" paddingLeft="15" paddingTop="15"/>
+               <switch bind:checked="{checkMe}" width="20%" height="20%" on:checkedChange={() => onCheckedChange()} color="black" backgroundColor="black" offBackgroundColor="red" />
+               </flexboxLayout>
 
                <stackLayout>
                     <absoluteLayout  class= "reactionBar">
@@ -100,7 +114,7 @@
   }
 
   .reactionBar{
-    margin: 20 20;
+    margin: 20 auto;
   }
 
   .text{
@@ -126,8 +140,8 @@
   }
   
   .like{
-      width: 75;
-      height: 90;
+      width: 30%;
+      height: 60%;
 
   }
 

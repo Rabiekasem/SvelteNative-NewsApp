@@ -6,7 +6,7 @@
 </script>
 
 <page class="page">
-  <scrollView>
+  <scrollView class="scroll">
     <stackLayout class="stack">
       <label class="label1" textWrap={true} text= "{item.title}" />
       <label class="line"/>
@@ -26,11 +26,15 @@
 <style>
  .stack{
     padding: 24;
- }
+  }
+
+ .scroll{
+   font-family: 'Times New Roman', Times, serif;
+  }
 
  .page{
-    background-color: rgb(212, 212, 212);
- }
+    background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
+  }
 
  .button{
     background-color: rgb(207, 189, 224);

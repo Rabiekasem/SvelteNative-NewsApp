@@ -182,6 +182,9 @@
 
 <style>
 
+ .page{
+     font-family: 'Times New Roman', Times, serif;
+ }
 
  .scroll{
     background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
@@ -189,7 +192,7 @@
 
  .mainText{
     font-size: 40;
-    font-family: 'Times New Roman', Times, serif;  
+      
     animation-name: change;
     animation-duration: 2s;
     animation-direction: alternate;
@@ -201,7 +204,6 @@
 
  .mainText2{
     font-size: 20;
-    font-family: 'Times New Roman', Times, serif;  
     color: green;  
     animation-name: change2;
     animation-duration: 1.5s;
