@@ -133,7 +133,6 @@ onMount( async () => {
 
 body{
 	margin: 0;
-	margin-top: 0;
 }
 
 #main{
