@@ -1,55 +1,53 @@
 <script>
-  import {onMount} from "svelte"
-  import {goBack} from "svelte-native"
-  import {navigate} from "svelte-native"
-  import {showModal} from 'svelte-native'
-  import MainBar from "../components/Mainbar.svelte"
+  import { onMount } from "svelte";
+  import { goBack } from "svelte-native";
+  import { navigate } from "svelte-native";
+  import { showModal } from "svelte-native";
+  import MainBar from "../components/Mainbar.svelte";
 
-  import News from "./News.svelte"
-  import Football from "./Football.svelte"
-  import Contact from "./Contact.svelte"
-  import App from "../App.svelte"
-  
-  import SubPage5 from "../modals/SubPage5.svelte"
+  import News from "./News.svelte";
+  import Football from "./Football.svelte";
+  import Contact from "./Contact.svelte";
+  import App from "../App.svelte";
 
-  
-  let articles = []
-  
+  import SubPage5 from "../modals/SubPage5.svelte";
 
-  const showfootballGames = async(article) =>{
+  let articles = [];
+
+  const showfootballGames = async article => {
     await showModal({
       page: SubPage5,
       fullscreen: true,
-      props:{
-        article:article
+      props: {
+        article: article
       }
-    })
-  }
+    });
+  };
 
-  const articleSearch = async() =>{
+  const articleSearch = async () => {
     await showModal({
       page: ArticleSearchPage,
-      props:{
-        articles:articles
+      props: {
+        articles: articles
       }
-    })
-  }
-  
-    onMount (async() => {
-    await fetch("https://www.scorebat.com/video-api/v1/")
-    .then (response => response.json())
-    .then (json => {
-      articles = json
-      })
-    .catch(error => console.log(error))
-  })
+    });
+  };
 
+  onMount(async () => {
+    await fetch("https://www.scorebat.com/video-api/v1/")
+      .then(response => response.json())
+      .then(json => {
+        articles = json;
+      })
+      .catch(error => console.log(error));
+  });
+  
 </script>
 
 
 <page class="page" actionBarHidden={true}>
   <scrollView class="scroll">
-  <stackLayout>
+    <stackLayout>
 
       <stackLayout class="stackStack">
         <scrollView orientation="horizontal">
@@ -58,65 +56,79 @@
       </stackLayout>
 
       <stackLayout>
-        <label text="Trending sports news" textWrap={true} class="mainText"/>
-      </stackLayout>
-    
-      <stackLayout>
-          <scrollView height="100%">
-            <stackLayout class="articles" >
-              {#each articles as article}
-                <cardView class="card" elevation="100" margin="25" height="400" width="90%" radius="20" shadowRadius="15">
-                  <flexboxLayout class="article" height="100%" flexDirection="row"  on:tap={() => showfootballGames(article)}>
-                      <stackLayout class="lastStack">
-                        <label class="h1 text-center" text ="{article.title}" />
-                        <label class="p text-center" text ="{article.competition.name}" />
-                        <label class="p text-center" text ="{article.competition.url}" />
-                        <webView class="video" src="{article.embed}" />
-                      </stackLayout>
-                  </flexboxLayout>
-                </cardView>
-                <label class="line"/>
-              {:else}    
-                <activityIndicator busy="{true}" />
-              {/each}
-            </stackLayout> 
-          </scrollView>
+        <label text="Trending sports news" textWrap={true} class="mainText" />
       </stackLayout>
 
-  </stackLayout>
+      <stackLayout>
+        <scrollView height="100%">
+          <stackLayout class="articles">
+            {#each articles as article}
+              <cardView
+                class="card"
+                elevation="100"
+                margin="25"
+                height="400"
+                width="90%"
+                radius="20"
+                shadowRadius="15">
+                <flexboxLayout
+                  class="article"
+                  height="100%"
+                  flexDirection="row"
+                  on:tap={() => showfootballGames(article)}>
+                  <stackLayout class="lastStack">
+                    <label class="h1 text-center" text={article.title} />
+                    <label
+                      class="p text-center"
+                      text={article.competition.name} />
+                    <label
+                      class="p text-center"
+                      text={article.competition.url} />
+                    <webView class="video" src={article.embed} />
+                  </stackLayout>
+                </flexboxLayout>
+              </cardView>
+              <label class="line" />
+            {:else}
+              <activityIndicator busy={true} />
+            {/each}
+          </stackLayout>
+        </scrollView>
+      </stackLayout>
+
+    </stackLayout>
   </scrollView>
 </page>
 
 
 <style>
-
-  .scroll{
+  .scroll {
     background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
-    font-family: 'Times New Roman', Times, serif;
-  } 
+    font-family: "Times New Roman", Times, serif;
+  }
 
-  .mainText{
+  .mainText {
     text-align: center;
     font-size: 30;
     font-weight: 600;
     background-image: linear-gradient(240deg, #8baaaa 0%, #ae8b9c 100%);
-    color:  #f3eff1;
+    color: #f3eff1;
     margin: 40 auto;
   }
 
-  .card{
+  .card {
     background-color: #bba1ae;
   }
 
-  .p{
+  .p {
     margin-left: 12;
   }
 
-  .h1{
+  .h1 {
     font-size: 18;
   }
-  
-  .article{
+
+  .article {
     padding: 10;
     margin: 10;
     color: black;
@@ -131,33 +143,32 @@
     animation-timing-function: ease-in;
   }
 
-  @keyframes fade{
-    from{
+  @keyframes fade {
+    from {
       opacity: 0.5;
-      transform: scale(0.8)
+      transform: scale(0.8);
     }
-    to{
+    to {
       opacity: 1;
-      transform: scale(1)
+      transform: scale(1);
     }
   }
 
-  .line{
+  .line {
     width: 80%;
     height: 1;
     background-color: white;
     margin: 15;
   }
-  
-  .video{
+
+  .video {
     margin: 20 auto;
     height: 250;
     width: 100%;
   }
 
-  .lastStack{
+  .lastStack {
     margin: 15 auto;
     font-size: 12;
   }
-
 </style>

@@ -3,15 +3,15 @@
 </script>
 
 <page class="page">
-    <stackLayout>
-          <stackLayout> 
-            <button class="button" text="Back to main page" on:tap={() => closeModal()}/>
-          </stackLayout>
-          
-          <stackLayout>
-            <webView src="https://www.nytimes.com/2020/04/16/sports/coronavirus-sports-come-back.html" />
-          </stackLayout>
+  <stackLayout>
+    <stackLayout> 
+      <button class="button" text="Back to main page" on:tap={() => closeModal()}/>
     </stackLayout>
+    
+    <stackLayout>
+      <webView src="https://www.nytimes.com/2020/04/16/sports/coronavirus-sports-come-back.html" />
+    </stackLayout>
+  </stackLayout>
 </page>
 
 

@@ -3,15 +3,15 @@
 </script>
 
 <page class="page">
-    <stackLayout>
-          <stackLayout> 
-            <button class="button" text="Back to main page" on:tap={() => closeModal()}/>
-          </stackLayout>
-          
-          <stackLayout>
-            <webView src="https://www.theguardian.com/world/2020/apr/09/climate-crisis-amid-coronavirus-lockdown-nature-bounces-back-but-for-how-long" />
-          </stackLayout>
+  <stackLayout>
+    <stackLayout> 
+      <button class="button" text="Back to main page" on:tap={() => closeModal()}/>
     </stackLayout>
+    
+    <stackLayout>
+      <webView src="https://www.theguardian.com/world/2020/apr/09/climate-crisis-amid-coronavirus-lockdown-nature-bounces-back-but-for-how-long" />
+    </stackLayout>
+  </stackLayout>
 </page>
 
 

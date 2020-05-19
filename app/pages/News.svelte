@@ -1,140 +1,158 @@
 <script>
-  import {onMount} from "svelte"
-  import {goBack} from "svelte-native"
-  import {navigate} from "svelte-native"
-  import {showModal} from 'svelte-native'
-  import MainBar from "../components/Mainbar.svelte"
+  import { onMount } from "svelte";
+  import { goBack } from "svelte-native";
+  import { navigate } from "svelte-native";
+  import { showModal } from "svelte-native";
+  import MainBar from "../components/Mainbar.svelte";
 
+  import Global from "./Global.svelte";
+  import Football from "./Football.svelte";
+  import Contact from "./Contact.svelte";
+  import App from "../App.svelte";
+  import ArticleSearchPage from "../modals/ArticleSearchPage.svelte";
 
-  import Global from "./Global.svelte"
-  import Football from "./Football.svelte" 
-  import Contact from "./Contact.svelte" 
-  import App from "../App.svelte"
-  import ArticleSearchPage from "../modals/ArticleSearchPage.svelte"
+  import SubPage from "../modals/SubPage.svelte";
 
-  import SubPage from "../modals/SubPage.svelte"
-  
-  const apiKey = "e14f4ede420e450baafed861c6893a83"
-  const NewsApi = `https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${apiKey}`
-  
-  
-  let articles = []
-  
+  const apiKey = "e14f4ede420e450baafed861c6893a83";
+  const NewsApi = `https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${apiKey}`;
 
-  const showPage = async(article) =>{
+  let articles = [];
+
+  const showPage = async article => {
     await showModal({
       page: SubPage,
       fullscreen: true,
-      props:{
-        article:article
+      props: {
+        article: article
       }
-    })
-  }
+    });
+  };
 
-  const articleSearch = async() =>{
-      await showModal({
+  const articleSearch = async () => {
+    await showModal({
       page: ArticleSearchPage,
       fullscreen: true,
-      props:{
-        articles:articles
+      props: {
+        articles: articles
       }
-    })
-  }
-  
-  onMount (() => {
+    });
+  };
+
+  onMount(() => {
     fetch(NewsApi)
-    .then(response => response.json())
-    .then(json => {
-      articles = json.articles
+      .then(response => response.json())
+      .then(json => {
+        articles = json.articles;
       })
-    .catch(error => console.log(error))
-  })
+      .catch(error => console.log(error));
+  });
 
 </script>
 
 
 <page class="page" actionBarHidden={false}>
   <actionBar title="Search" class="Bar">
-      <actionItem on:tap={articleSearch}
-      android.systemIcon="ic_menu_search" android.position = "right"
-      ios.systemIcon="10" ios.position="right"
-      />
+    <actionItem
+      on:tap={articleSearch}
+      android.systemIcon="ic_menu_search"
+      android.position="right"
+      ios.systemIcon="10"
+      ios.position="right" />
   </actionBar>
 
   <scrollView class="scroll">
-  <stackLayout>
-  
+    <stackLayout>
+
       <stackLayout class="stackStack">
         <scrollView orientation="horizontal">
           <MainBar />
         </scrollView>
       </stackLayout>
-      
+
       <stackLayout>
-        <label text="Current news from all around the world" textWrap={true} class="mainText"/>
-      </stackLayout>
-      
-    
-      <stackLayout>
-          <scrollView height="100%">
-            <stackLayout class="articles" >
-              {#each articles as article}
-                <cardView class="card" elevation="100" margin="25" height="210" width="90%" radius="40">
-                  <flexboxLayout class="article" height="100%" flexDirection="row"  on:tap={() => showPage(article)}>
-                      <image src="{article.urlToImage}" class="img-rounded img" stretch="fill" />
-                      <stackLayout class="lastStack" height="100%">
-                        <label textWrap={true} class="p text-center" text ="{article.title}" />
-                        <label text ="{article.author}" class=" p author text-center"/>
-                      </stackLayout>
-                  </flexboxLayout>
-                </cardView>
-                <label class="line"/>
-              {:else}    
-                <activityIndicator busy="{true}" />
-              {/each}
-            </stackLayout> 
-          </scrollView>
+        <label
+          text="Current news from all around the world"
+          textWrap={true}
+          class="mainText" />
       </stackLayout>
 
-  </stackLayout>
+      <stackLayout>
+        <scrollView height="100%">
+          <stackLayout class="articles">
+            {#each articles as article}
+              <cardView
+                class="card"
+                elevation="100"
+                margin="25"
+                height="210"
+                width="90%"
+                radius="40">
+                <flexboxLayout
+                  class="article"
+                  height="100%"
+                  flexDirection="row"
+                  on:tap={() => showPage(article)}>
+                  <image
+                    src={article.urlToImage}
+                    class="img-rounded img"
+                    stretch="fill" />
+                  <stackLayout class="lastStack" height="100%">
+                    <label
+                      textWrap={true}
+                      class="p text-center"
+                      text={article.title} />
+                    <label
+                      text={article.author}
+                      class=" p author text-center" />
+                  </stackLayout>
+                </flexboxLayout>
+              </cardView>
+              <label class="line" />
+            {:else}
+              <activityIndicator busy={true} />
+            {/each}
+          </stackLayout>
+        </scrollView>
+      </stackLayout>
+
+    </stackLayout>
   </scrollView>
 </page>
 
 
 <style>
-
-  .Bar{
+  .Bar {
     background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
     color: white;
   }
 
-  .scroll{
+  .scroll {
     background-image: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%);
-    font-family: 'Times New Roman', Times, serif;
-  } 
+    font-family: "Times New Roman", Times, serif;
+  }
 
-  .page{
-    font-family: 'Times New Roman', Times, serif;
-  }  
+  .page {
+    font-family: "Times New Roman", Times, serif;
+  }
 
-  .mainText{
+  .mainText {
     text-align: center;
     font-size: 30;
     font-weight: 600;
     background-image: linear-gradient(240deg, #8baaaa 0%, #ae8b9c 100%);
-    color:  #f3eff1;
+    color: #f3eff1;
     margin: 40 auto;
   }
 
-  .card{
+  .card {
     background-color: rgb(212, 212, 212);
   }
 
-  .p{
+  .p {
     margin-left: 12;
   }
-   
-  .article{
+
+  .article {
     padding: 10;
     margin: 10;
     color: black;
@@ -148,45 +166,44 @@
     animation-timing-function: ease-in;
   }
 
-  @keyframes fade{
-    from{
+  @keyframes fade {
+    from {
       opacity: 0.5;
-      transform: scale(0.8)
+      transform: scale(0.8);
     }
-    to{
+    to {
       opacity: 1;
-      transform: scale(1)
+      transform: scale(1);
     }
   }
 
-  .articles{
+  .articles {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
   }
 
-  .line{
+  .line {
     width: 80%;
     height: 1;
     background-color: white;
     margin: 15;
   }
-  
-  .img{
+
+  .img {
     width: 280;
   }
-  
-  .author{
+
+  .author {
     bottom: 0;
     font-size: 10;
-    
+
     color: rgb(128, 87, 124);
     font-size: 18;
   }
 
-  .lastStack{
+  .lastStack {
     margin: 20 auto;
   }
-
 </style>

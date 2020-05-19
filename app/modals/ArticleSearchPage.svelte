@@ -24,30 +24,30 @@
 </script>
 
 <frame>
-   <page class="page" actionBarHidden={true}>
+  <page class="page" actionBarHidden={true}>
     <gridLayout rows="80,80,*">
-    <button row = "0" text ="close" on:tap={closeModal} class="button"/>
-    <searchBar row="1" hint="filter" class="search"
-    bind:text={searchInput}
-    on:textChange={filterResults}
-    />
-        <scrollView row="2" class="scroll">
-          <stackLayout>
-          {#each theSearch as item}
-            <cardView class="card" elevation="40" margin="25" height="180" width="80%" radius="40">
-                <flexboxLayout class="article" height="100%" flexDirection="row" on:tap={() => showPageCopy(item)}>
-                    <image src="{item.urlToImage}" class="img-rounded img" stretch="fill" />
-                    <stackLayout class="lastStack" height="100%">
-                      <label textWrap={true} class="p text-center" text ="{item.title}" />
-                      <label text ="{item.author}" class=" p author text-center"/>
-                    </stackLayout>
-                </flexboxLayout>
-            </cardView>
-          {/each}
-          </stackLayout>
-        </scrollView>
+      <button row = "0" text ="close" on:tap={closeModal} class="button"/>
+      <searchBar row="1" hint="filter" class="search"
+      bind:text={searchInput}
+      on:textChange={filterResults}
+      />
+      <scrollView row="2" class="scroll">
+        <stackLayout>
+        {#each theSearch as item}
+          <cardView class="card" elevation="40" margin="25" height="180" width="80%" radius="40">
+              <flexboxLayout class="article" height="100%" flexDirection="row" on:tap={() => showPageCopy(item)}>
+                  <image src="{item.urlToImage}" class="img-rounded img" stretch="fill" />
+                  <stackLayout class="lastStack" height="100%">
+                    <label textWrap={true} class="p text-center" text ="{item.title}" />
+                    <label text ="{item.author}" class=" p author text-center"/>
+                  </stackLayout>
+              </flexboxLayout>
+          </cardView>
+        {/each}
+        </stackLayout>
+      </scrollView>
     </gridLayout>  
-   </page>
+  </page>
 </frame>
 
 

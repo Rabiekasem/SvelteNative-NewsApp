@@ -3,7 +3,6 @@
   import { closeModal } from 'svelte-native'
   export let article
   
-
 </script>
 
 <page class="page">

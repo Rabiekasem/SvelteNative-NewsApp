@@ -25,7 +25,7 @@
    background-color: rgb(180, 180, 179);
  }
  .button{
-  width: 100%;
+   width: 100%;
    background-color: gray;
    color: white;
    margin: 0;
